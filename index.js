@@ -2,10 +2,12 @@ const LimpTime = require('./LimpTime')
 
 const limptime = new LimpTime(4000)
 
-console.log(
-  'attempting to get limptime every 1 second, even though LimpTime will update itself every 4 seconds'
-)
+console.log('limptime:   ', limptime)
+
+const doit = async () => await limptime.result()
 
 setInterval(() => {
-  console.log(limptime)
+  doit()
+    .then(asdf => console.log('finish: ', asdf))
+    .catch(err => console.log('err', err))
 }, 1000)
